@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Toaster, toast } from 'react-hot-toast';
 import { FeedbackOptions } from "components/FeedbackOptions/FeedbackOptions";
 import { Statistics } from "./Statistics/Statistics";
 import { Section } from "./Section/Section";
@@ -24,6 +25,7 @@ export const App =() => {
       default:
         break;
     }
+    toast('Thank You!');
   }
   
   const countTotalFeedback = () => {
@@ -53,7 +55,16 @@ export const App =() => {
             positivePercentage={countPositiveFeedbackPercentage()}
           />) :
             <Notification message="There is no feedback" />}
-          </Section>
+        </Section>
+        <Toaster
+          toastOptions={{
+            duration: 2500,
+            icon: '💙',
+            style: {
+              background: '#3deb34',
+              color: 'black',
+            }
+          }} />
       </>
     );
   }
